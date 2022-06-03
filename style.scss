@@ -1,0 +1,51 @@
+@use 'variables';
+@use 'px-to-rem';
+
+@mixin square($color, $bordercolor, $fontsize: 1rem){
+    color: $color;
+    border: px-to-rem.convertpx(1) solid $bordercolor;
+    font-size: $fontsize;
+    text-align: center;
+    padding: px-to-rem.convertpx(10);
+}
+
+div{
+    border: solid px-to-rem.convertpx(1) variables.$redcolor;
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+        h1{
+            color: variables.$greencolor;
+            margin-bottom: px-to-rem.convertpx(2);
+            border-bottom: px-to-rem.convertpx(1) solid variables.$bluecolor;
+        }
+
+        section{
+            display: flex;
+            width: 95%;
+            // margin: 0 20px;
+
+
+                article:nth-child(odd){
+                    @include square(variables.$bluecolor, variables.$greencolor);
+
+                }
+                article:nth-child(even){
+                    @include square(variables.$redcolor, variables.$greencolor);
+
+                }
+        }
+
+        section:last-child{
+            article{
+                @include square(variables.$greencolor,variables.$bluecolor, px-to-rem.convertpx(24));
+                padding: 0 px-to-rem.convertpx(20);
+                width: 100%;
+            }
+            }
+
+ }
